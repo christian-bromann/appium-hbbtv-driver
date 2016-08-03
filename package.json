@@ -24,6 +24,7 @@
     "lib": "lib"
   },
   "dependencies": {
+    "appium-base-driver": "^2.0.12",
     "babel-runtime": "^6.11.6"
   },
   "scripts": {},
