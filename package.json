@@ -27,7 +27,11 @@
     "appium-base-driver": "^2.0.12",
     "appium-logger": "^2.1.0",
     "babel-runtime": "^6.11.6",
-    "virtualbox-promise": "^0.1.0"
+    "request-promise-native": "^1.0.2",
+    "tmp": "0.0.28",
+    "virtualbox-promise": "^0.1.0",
+    "xml2js": "^0.4.17",
+    "yargs": "^4.8.1"
   },
   "scripts": {},
   "devDependencies": {
