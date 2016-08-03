@@ -1,0 +1,32 @@
+{
+  "name": "appium-hbbtv-driver",
+  "author": "Christian Bromann <christian@saucelabs.com>",
+  "description": "Appium driver for automating HbbTV ready devices",
+  "version": "0.0.0",
+  "keywords": [
+    "appium",
+    "hbbtv"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.fokus.fraunhofer.de/christian.bromann/appium-hbbtv-driver.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.fokus.fraunhofer.de/christian.bromann/appium-hbbtv-driver/issues"
+  },
+  "engines": [
+    "node"
+  ],
+  "main": "./build/index.js",
+  "bin": {},
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+  },
+  "devDependencies": {
+  }
+}
