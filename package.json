@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "appium-base-driver": "^2.0.12",
+    "appium-logger": "^2.1.0",
     "babel-runtime": "^6.11.6"
   },
   "scripts": {},
