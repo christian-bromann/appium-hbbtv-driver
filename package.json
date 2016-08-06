@@ -29,6 +29,7 @@
     "babel-runtime": "^6.11.6",
     "lodash.topairs": "^4.2.0",
     "request-promise-native": "^1.0.2",
+    "socket.io": "^1.4.8",
     "tmp": "0.0.28",
     "virtualbox-promise": "^0.1.0",
     "xml2js": "^0.4.17",
