@@ -1,3 +1,6 @@
+var webpackConfig = require('./webpack.config.js')
+var webpack = require('webpack')
+
 module.exports = function (grunt) {
     grunt.initConfig({
         pkgFile: 'package.json',
@@ -7,7 +10,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: './',
-                    src: ['index.js', './lib/**/*.js'],
+                    src: ['index.js', './lib/**/*.js', '!lib/driver/**/*.js'],
                     dest: 'build',
                     ext: '.js'
                 }]
@@ -32,8 +35,39 @@ module.exports = function (grunt) {
         },
         watch: {
             dist: {
-                files: './lib/**/*.js',
+                files: [
+                    'lib/**/*.js',
+                    '!lib/driver/**/*.js' // handled by webpack
+                ],
                 tasks: ['babel:dist']
+            }
+        },
+        webpack: {
+            options: webpackConfig,
+            prod: {
+                devtool: 'source-map',
+                plugins: webpackConfig.plugins.concat(
+                    new webpack.optimize.UglifyJsPlugin({
+                        compress: { warnings: false }
+                    }),
+                    new webpack.optimize.DedupePlugin()
+                )
+            },
+            dev: {
+                devtool: '#cheap-module-source-map',
+                debug: true,
+                watch: true,
+                keepalive: true,
+                failOnError: false
+            }
+        },
+        concurrent: {
+            dev: {
+                tasks: ['webpack:dev', 'watch'],
+                options: {
+                    logConcurrentOutput: true,
+                    limit: 2
+                }
             }
         }
     })
@@ -53,4 +87,6 @@ module.exports = function (grunt) {
             'bump:' + (type || 'patch')
         ])
     })
+
+    grunt.registerTask('dev', ['concurrent:dev'])
 }
