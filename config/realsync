@@ -1,0 +1,61 @@
+##
+## dkLab RealSync configuration file.
+## http://en.dklab.ru/lib/dklab_realsync/
+##
+## Usage:
+## First setup the binary file on your development machine (See "Usage for XXX") on the website.
+## Then copy this file into the root directory of the project via
+##
+## ```sh
+## $ cp ./config/realsync ./.realsync
+## ```
+##
+## Last but not least change to the root directory of the project and start syncing:
+##
+## ```sh
+## $ /opt/dklab_realsync/realsync
+## ```
+##
+
+# Local directory to be realtime-replicated.
+local = /Users/<username>/appium-hbbtv-driver
+
+# Remote host to replicate to over SSH.
+# (ip address of the raspberry pi)
+host = 192.168.1.4
+
+# User to connect to the remote host.
+user = pi
+
+# Directory at the remote host to replicate files to.
+remote = /home/pi/appium-hbbtv-driver
+
+# Pathname wildcards to be excluded from the replication.
+# Use "*" for any filename character and "**" for any character,
+# including "/" in pathnames.
+exclude = .realsync
+exclude = CVS
+exclude = .git
+exclude = .svn
+exclude = .hg
+exclude = .cache
+exclude = .idea
+exclude = nbproject
+exclude = ~*
+exclude = *.tmp
+exclude = *.pyc
+exclude = *.swp
+
+# To turn off "synchronization ding" sound, set the following to 1.
+nosound = 0
+
+# If you need to load some other config file from here, uncomment
+# and correct the following directive:
+#load = some_file.ini
+
+# Options passed to RSYNC.
+#rsync_options = -rltzxv --delete
+
+# Options passed to SSH.
+#ssh_options = -o Compression=yes -o CompressionLevel=9 -o ConnectTimeout=3 -o ServerAliveInterval=2 -o ServerAliveCountMax=4 -o StrictHostKeyChecking=no
+ssh_options = -o ServerAliveInterval=10 -o ConnectTimeout=3 -o ServerAliveCountMax=4
