@@ -24,15 +24,16 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "npm-run-all clean compile",
+    "build": "run-s clean compile",
     "clean": "rm -rf ./build",
     "compile": "babel lib/ -d build/ --ignore lib/driver/",
-    "dev": "npm-run-all compile --parallel start:*",
+    "dev": "run-p start:dev:*",
     "eslint": "eslint ./lib/*.js",
     "start": "npm run start:server",
-    "start:babel": "npm run compile -- --watch",
+    "start:dev": "nodemon -e js,json,yaml --watch build",
     "start:server": "node build/index.js",
-    "start:webpack": "npm run webpack -- --watch",
+    "start:dev:babel": "npm run compile -- --watch",
+    "start:dev:webpack": "npm run webpack -- --watch",
     "webpack": "webpack --progress --colors --config config/webpack.config"
   },
   "dependencies": {
@@ -66,6 +67,7 @@
     "eslint-plugin-promise": "^2.0.0",
     "eslint-plugin-standard": "^2.0.0",
     "load-grunt-tasks": "^3.5.0",
+    "nodemon": "1.11.0",
     "webpack": "2.2.1",
     "webpack-combine-loaders": "2.0.3",
     "webpack-dev-server": "2.2.1",
