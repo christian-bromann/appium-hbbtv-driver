@@ -1,19 +1,26 @@
 /*global GLOBAL: false */
-var path = require('path')
-var webpack = require('webpack')
+import path from 'path'
+import webpack from 'webpack'
 
-module.exports = {
+const ENV = process.env.NODE_ENV || 'development'
+const PATHS = {
+    root: path.resolve(__dirname, '..', '..'),
+    dist: path.resolve(__dirname, '..', '..', 'build')
+}
+
+export { ENV, PATHS }
+
+export default {
+    context: path.resolve(__dirname, '..', '..', 'lib', 'driver'),
     output: {
-        path: path.join(__dirname, 'build'),
-        publicPath: '/',
+        path: path.resolve(__dirname, '..', '..', 'build', 'driver'),
         filename: '[name].js'
     },
     entry: {
-        'lib/driver/driver': './lib/driver/driver.bundle.js'
+        'driver': './driver.bundle.js'
     },
     resolve: {
-        extensions: ['', '.js', '.es6'],
-        modulesDirectories: ['node_modules'],
+        extensions: ['.js', '.es6'],
         alias: {
             driver: path.resolve(__dirname, 'lib/driver')
         }
@@ -27,7 +34,7 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel'
+            loader: 'babel-loader'
         }]
     },
     // resolve bower components based on the 'main' property
