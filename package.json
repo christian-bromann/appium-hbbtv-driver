@@ -30,7 +30,7 @@
     "dev": "run-p start:dev:*",
     "eslint": "eslint ./lib/*.js",
     "start": "npm run start:server",
-    "start:dev": "nodemon -e js,json,yaml --watch build",
+    "start:dev": "nodemon -e js,json,yaml --watch build --ignore build/driver",
     "start:server": "node build/index.js",
     "start:dev:babel": "npm run compile -- --watch",
     "start:dev:webpack": "npm run webpack -- --watch",
