@@ -1,4 +1,3 @@
-/*global GLOBAL: false */
 import path from 'path'
 import webpack from 'webpack'
 
