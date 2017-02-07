@@ -26,11 +26,11 @@
   "scripts": {
     "build": "run-s clean compile webpack",
     "clean": "rm -rf ./build",
-    "compile": "babel lib/ -d build/ --ignore lib/driver/",
+    "compile": "babel lib/ -d build/ --ignore lib/webdriver,lib/debugger/",
     "dev": "run-p start:dev:*",
     "eslint": "eslint ./lib/*.js",
     "start": "npm run start:server",
-    "start:dev": "nodemon -e js,json,yaml --watch build --ignore build/driver",
+    "start:dev": "nodemon -e js,json,yaml --watch build --ignore build/webdriver/ --ignore build/debugger/",
     "start:server": "node build/index.js",
     "start:dev:babel": "npm run compile -- --watch",
     "start:dev:webpack": "npm run webpack -- --watch",

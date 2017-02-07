@@ -10,13 +10,14 @@ const PATHS = {
 export { ENV, PATHS }
 
 export default {
-    context: path.resolve(__dirname, '..', '..', 'lib', 'driver'),
+    context: path.resolve(__dirname, '..', '..', 'lib'),
     output: {
-        path: path.resolve(__dirname, '..', '..', 'build', 'driver'),
+        path: path.resolve(__dirname, '..', '..', 'build'),
         filename: '[name].js'
     },
     entry: {
-        'driver': './driver.bundle.js'
+        'webdriver/webdriver': './webdriver/webdriver.bundle.js',
+        'debugger/debugger': './debugger/debugger.bundle.js'
     },
     resolve: {
         extensions: ['.js', '.es6'],
