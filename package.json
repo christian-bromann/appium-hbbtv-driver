@@ -40,6 +40,8 @@
     "appium-base-driver": "~2.1.6",
     "appium-support": "~2.4.0",
     "babel-runtime": "~6.22.0",
+    "body-parser": "1.16.0",
+    "express": "4.14.1",
     "json-stringify-safe": "~5.0.1",
     "lodash.topairs": "~4.3.0",
     "request-promise-native": "~1.0.3",
