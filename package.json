@@ -43,6 +43,7 @@
     "body-parser": "1.16.0",
     "cookie-parser": "1.4.3",
     "express": "4.14.1",
+    "js-cookie": "2.1.3",
     "json-stringify-safe": "~5.0.1",
     "mime-types": "2.1.14",
     "request-promise-native": "~1.0.3",
