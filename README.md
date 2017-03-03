@@ -3,6 +3,8 @@
 Appium HbbTV Driver
 ===================
 
+[![Dependency Status](https://www.versioneye.com/user/projects/58b987e62ff6830042beedd8/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58b987e62ff6830042beedd8)
+
 ***
 
 The Appium HbbTV Driver is a test automation tool for running automated tests on SmartTVs with
