@@ -1,0 +1,14 @@
+sudo: required
+dist: trusty
+
+language: node_js
+node_js: "7.4.0"
+
+before_script:
+  - export NODE_ENV=test
+
+script:
+  - "npm test"
+
+notifications:
+  email: false
