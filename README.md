@@ -3,6 +3,7 @@
 Appium HbbTV Driver
 ===================
 
+[![Build Status](https://travis-ci.com/christian-bromann/appium-hbbtv-driver.svg?token=px5tFzamGvYgujeyYVEp&branch=master)](https://travis-ci.com/christian-bromann/appium-hbbtv-driver)
 [![Dependency Status](https://www.versioneye.com/user/projects/58b987e62ff6830042beedd8/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58b987e62ff6830042beedd8)
 
 ***
