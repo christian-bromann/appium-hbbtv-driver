@@ -1,0 +1,36 @@
+#!/bin/sh
+# /etc/init.d/hbbtvproxy
+
+### BEGIN INIT INFO
+# Provides:          hbbtvproxy
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Redirects all traffic on port 80 to the HbbTV proxy
+# Description:       Redirects all traffic on port 80 to the HbbTV proxy
+### END INIT INFO
+
+
+case "$1" in
+  start)
+    echo "Set IPTABLES"
+    # run application you want to start
+    iptables -t nat -A POSTROUTING ! -d 192.168.3.1 -j MASQUERADE
+    iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.3.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
+    iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.3.1 -p tcp --dport 443 -j REDIRECT --to-port 8080
+;;
+  stop)
+    echo "REMOVE IPTABLES"
+    # kill application you want to stop
+    iptables -t nat -D POSTROUTING ! -d 192.168.3.1 -j MASQUERADE
+    iptables -t nat -D PREROUTING -i eth1 ! -d 192.168.3.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
+    iptables -t nat -D PREROUTING -i eth1 ! -d 192.168.3.1 -p tcp --dport 443 -j REDIRECT --to-port 8080
+;;
+  *)
+    echo "Usage: /etc/init.d/hbbtvproxy {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
