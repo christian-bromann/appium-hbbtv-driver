@@ -34,7 +34,7 @@ First install all (un)necessary Ubuntu packages that might be needed on the Rasp
 ```sh
 $ apt-get update
 $ apt-get upgrade
-$ apt-get install -y curl wget vim openssh-client libxml2 git python2.7 python2.7-dev python-pip build-essential libssl-dev git
+$ apt-get install -y curl wget vim openssh-client libxml2 git python2.7 python2.7-dev python-pip build-essential libssl-dev git dnsmasq
 ```
 
 Add HbbTV Mime-Type to `/etc/mime.types` by adding:
@@ -119,3 +119,4 @@ PING raspberrypi.local (192.168.1.7): 56 data bytes
 # More Documentation
 
 - [Concepts](/docs/concepts.md)
+- [Network Setup](/docs/network.md)
