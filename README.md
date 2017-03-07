@@ -120,3 +120,4 @@ PING raspberrypi.local (192.168.1.7): 56 data bytes
 
 - [Concepts](/docs/concepts.md)
 - [Network Setup](/docs/network.md)
+- [Proxy Configuration](/docs/configuration.md)
