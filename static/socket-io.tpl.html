@@ -1,0 +1,17 @@
+<script src="http://<%= tvIPAddress %>:8080/socket.io/socket.io.js" data-origin="debugger"></script>
+<script type="text/javascript" data-origin="debugger">
+    //<![CDATA[
+    window.socket = window.io();
+    window.log = function () {
+        var args = Array.prototype.slice.call(arguments);
+        window.socket.emit('log', args);
+    }
+    window.onerror = function (errorMsg, url, lineNumber) {
+        window.socket.emit('error:window', {
+           errorMsg: errorMsg,
+           url: url,
+           lineNumber: lineNumber
+        });
+    };
+    //]]>
+</script>
