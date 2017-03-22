@@ -41,6 +41,7 @@
     "webpack": "webpack --progress --colors --config config/webpack.config"
   },
   "dependencies": {
+    "acorn": "4.0.11",
     "appium-base-driver": "~2.3.0",
     "appium-support": "~2.5.1",
     "babel-runtime": "~6.23.0",
