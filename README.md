@@ -17,7 +17,7 @@ mobile test automation tool chain.
 To run the Appium HbbTV Driver you need the following hardware components:
 
 - A SmartTV that supports HbbTV >= 1.2
-- A Raspberry Pi (preferably v3) with Raspbian installed
+- A Raspberry Pi (preferably v3) with Raspbian Jessie with Pixel installed
 - An ethernet cabel to connect the SmartTV with the Raspberry Pi
 - A working internet connection the Raspberry Pi can connect to via its wireless component
 
@@ -26,6 +26,12 @@ To run the Appium HbbTV Driver you need the following hardware components:
 In order to allow the Raspberry Pi to interfere network packages from the TV you need to setup the TV in a way that it gets the internet connection from the Raspberry Pi. The Appium HbbTV Driver will take care of forwarding the packages back and forth. Make sure the Pi has access to the internet. Connect the TV via ethernet cable to the Raspberry Pi. Then either use the wireless component of the Pi to connect to the internet or connect another ethernet adapter via USB. The basic setup can look like:
 
 ![Appium HbbTV Driver](/docs/assets/connection.png)
+
+# Connect to Raspberry Pi
+
+If you start with a clean SD card make sure you flash it with the [latest](https://www.raspberrypi.org/downloads/raspbian/) Raspbian OS image using native disk utilities or Raspberries helper tool called [Etcher](https://etcher.io/). To connect your local computer via SSH with the PI you first need to enable SSH as it is disabled by default as of the November 2016 release:
+
+> For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the 'ssh' file. If it is found, SSH is enabled, and the file is deleted. The content of the file does not matter: it could contain text, or nothing at all. ([ref](https://www.raspberrypi.org/documentation/remote-access/ssh/))
 
 # Installation
 
