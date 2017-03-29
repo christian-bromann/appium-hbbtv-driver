@@ -68,10 +68,11 @@ $ nvm use default
 Download the Appium HbbTV Driver and install its dependencies. Make sure you can access the repository by setting up an access key and publishing it on GitLab.
 
 ```sh
-$ cd /home/pi/
+$ cd ~
 $ git clone git@gitlab.fokus.fraunhofer.de:christian.bromann/appium-hbbtv-driver.git
 $ cd appium-hbbtv-driver
 $ npm install
+$ npm run build
 ```
 
 Last but not least start the server with:

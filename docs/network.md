@@ -7,31 +7,30 @@ First let's setup the DHCP server to assign IPs for the SmartTV properly.
 
 ```sh
 # make a backup from the default config
-$ sudo mv /etc/dnsmasq.conf /etc/dnsmasq_backup.conf
+$ sudo cp /etc/dnsmasq.conf /etc/dnsmasq_backup.conf
 ```
 
 Create an empty file of `/etc/dnsmasq.conf` and set the following:
 
 ```
 interface=eth1
-dhcp-range=192.168.3.2,192.168.3.254,255.255.255.0,12h
+dhcp-range=192.168.0.2,192.168.0.254,255.255.255.0,12h
 ```
 
 Next step is to define the network interfaces so that the TV can connect properly to the Raspberry Pi as well as the Pi to the computer/router. Again make sure to create a backup file before changing anything:
 
 ```sh
-$ sudo mv /etc/network/interfaces /etc/network/interfaces_backup
+$ sudo cp /etc/network/interfaces /etc/network/interfaces_backup
 ```
 
 Then create an empty file and add the following at the end to the file:
 
 ```
-auto eth0
 iface eth0 inet manual
 
 auto eth1
 iface eth1 inet static
-  address 192.168.3.1
+  address 192.168.0.1
   netmask 255.255.255.0
 ```
 
@@ -72,7 +71,7 @@ eth0      Link encap:Ethernet  HWaddr b8:27:eb:a3:4b:76
           RX bytes:1932245 (1.8 MiB)  TX bytes:911841 (890.4 KiB)
 
 eth1      Link encap:Ethernet  HWaddr 00:60:6e:b3:67:88
-          inet addr:192.168.3.1  Bcast:192.168.3.255  Mask:255.255.255.0
+          inet addr:192.168.0.1  Bcast:192.168.0.255  Mask:255.255.255.0
           inet6 addr: fe80::260:6eff:feb3:6788/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:31252 errors:0 dropped:0 overruns:0 frame:0
@@ -93,7 +92,7 @@ $ sudo update-rc.d hbbtvproxy defaults
 Or you can just apply the rules manually:
 
 ```sh
-$ iptables -t nat -A POSTROUTING ! -d 192.168.3.1 -j MASQUERADE
-$ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.3.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
-$ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.3.1 -p tcp --dport 443 -j REDIRECT --to-port 8080
+$ iptables -t nat -A POSTROUTING ! -d 192.168.0.1 -j MASQUERADE
+$ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.0.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
+$ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.0.1 -p tcp --dport 443 -j REDIRECT --to-port 8080
 ```
