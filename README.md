@@ -55,13 +55,13 @@ at the end to the file. Also you need to enable IP-Forwarding by uncommenting:
 net.ipv4.ip_forward=1
 ```
 
-in `/etc/sysctl.conf`. Next install Node.js `v7.4.0` using [NVM](https://github.com/creationix/nvm):
+in `/etc/sysctl.conf`. Next install Node.js `v7.8.0` using [NVM](https://github.com/creationix/nvm):
 
 ```sh
-$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 $ source $NVM_DIR/nvm.sh
-$ nvm install 7.4.0
-$ nvm alias default 7.4.0
+$ nvm install 7.8.0
+$ nvm alias default 7.8.0
 $ nvm use default
 ```
 
@@ -84,7 +84,7 @@ You should see all log messages in stdout as well as the TV should now start to 
 
 # Development
 
-To sync files between your dev environment and the Raspberry Pi install [realsync](http://en.dklab.ru/lib/dklab_realsync/) on your machine. Then make sure you have the same NodeJS version running like on the Pi (`v7.4.0`). Next clone the repository and install all NPM dependencies. After you installed realsync open a separate terminal and call it:
+To sync files between your dev environment and the Raspberry Pi install [realsync](http://en.dklab.ru/lib/dklab_realsync/) on your machine. Then make sure you have the same NodeJS version running like on the Pi (`v7.8.0`). Next clone the repository and install all NPM dependencies. After you installed realsync open a separate terminal and call it:
 
 ```sh
 # usage on mac
