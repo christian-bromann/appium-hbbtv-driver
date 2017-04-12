@@ -24,11 +24,14 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "run-s clean compile webpack",
+    "build": "run-s build:*",
+    "build:driver": "run-s clean compile webpack",
+    "build:devtools": "cd node_modules/chrome-devtools-frontend/scripts/gulp && npm run build && cd ../../../../",
     "clean": "rm -rf ./build",
     "compile": "babel lib/ -d build/ --ignore lib/webdriver,lib/debugger/",
     "dev": "run-p start:dev:*",
     "eslint": "eslint ./lib/*.js",
+    "install": "cd node_modules/chrome-devtools-frontend/scripts/gulp && npm install && cd ../../../../",
     "start": "npm run start:server",
     "start:dev": "nodemon -e html,js,json,yaml --watch build --watch static --ignore build/webdriver/ --ignore build/debugger/",
     "start:server": "node build/index.js",
@@ -47,6 +50,7 @@
     "appium-support": "~2.5.1",
     "babel-runtime": "~6.23.0",
     "body-parser": "~1.17.0",
+    "chrome-devtools-frontend": "1.0.463438",
     "cookie-parser": "~1.4.3",
     "ejs": "2.5.6",
     "express": "~4.15.0",
