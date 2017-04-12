@@ -1,0 +1,5 @@
+--colors
+--reporter dot
+--compilers js:babel-core/register
+test/*.spec.js
+test/**/*.spec.js
