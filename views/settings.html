@@ -10,15 +10,16 @@
     <input type="text" name="whitelist" value="<%= data.whitelist %>" style="width: 300px"><br>
     <br>
     <input type="submit" value="Save">
-</form>
 
-<form action="/register" method="post">
     <h2>Register to Selenium grid</h2>
     <label>Hub host:</label><br>
-    <input type="text" name="host" style="width: 300px"><br>
+    <input type="text" name="host" value="<%= data.host %>" style="width: 300px"><br>
     <br>
     <label>Hub port:</label><br>
-    <input type="text" name="port" style="width: 300px"><br>
+    <input type="text" name="port" value="<%= data.port %>" style="width: 300px"><br>
     <br>
-    <input type="submit" value="Register">
+    <input type="submit" value="Register"<% if (data.isAlreadyRegistered) { %> disabled="disabled"<% } %>>
+    <% if (data.isAlreadyRegistered) { %>
+        Successfully registered to Hub
+    <% } %>
 </form>
