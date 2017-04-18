@@ -61,6 +61,7 @@
     "mime-types": "~2.1.14",
     "request-promise-native": "~1.0.3",
     "serve-favicon": "~2.4.1",
+    "shelljs": "0.7.7",
     "socket.io": "~1.7.2",
     "tmp": "~0.0.31",
     "uuid": "~3.0.1",
