@@ -16,8 +16,8 @@ export default {
         filename: '[name].js'
     },
     entry: {
-        'webdriver/webdriver': './webdriver/webdriver.bundle.js',
-        'debugger/debugger': './debugger/debugger.bundle.js'
+        'scripts/webdriver': './webdriver/webdriver.bundle.js',
+        'scripts/debugger': './debugger/debugger.bundle.js'
     },
     resolve: {
         extensions: ['.js', '.es6'],
