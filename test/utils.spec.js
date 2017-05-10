@@ -4,7 +4,6 @@ import { expect } from 'chai'
 import {
     getDomain,
     hasGzipEncoding,
-    getDescription,
     getIpAddress,
     writeConfig,
     readConfig
@@ -23,17 +22,6 @@ describe('utils', () => {
         expect(hasGzipEncoding({ headers: { 'accept-encoding': 'gzip deflate' } })).to.be.ok()
         expect(hasGzipEncoding({ headers: { 'accept-encoding': 'foobar' } })).to.be.not.ok()
         expect(hasGzipEncoding({ headers: {} })).to.be.not.ok()
-    })
-
-    it('getDescription', () => {
-        let html = `<head><meta name="description" content="foobar" /></head>`
-        expect(getDescription(html)).to.be.equal('foobar')
-        html = `<head><meta content="foobar" name="description" /></head>`
-        expect(getDescription(html)).to.be.equal('foobar')
-        html = `<head><meta content="foobar" data-foo="bar" name="description" /></head>`
-        expect(getDescription(html)).to.be.equal('foobar')
-        html = `<head></head>`
-        expect(getDescription(html)).to.be.equal(undefined)
     })
 
     /**
