@@ -42,13 +42,14 @@
     "test:e2e": "echo 'no e2e tests yet'"
   },
   "dependencies": {
-    "acorn": "4.0.11",
+    "acorn": "~4.0.11",
     "appium-base-driver": "~2.3.0",
     "appium-support": "~2.5.1",
     "babel-runtime": "~6.23.0",
+    "devtools-backend": "~0.0.1",
     "json-stringify-safe": "~5.0.1",
-    "lodash.topairs": "4.3.0",
-    "npmlog": "4.0.2",
+    "lodash.topairs": "~4.3.0",
+    "npmlog": "~4.0.2",
     "tmp": "~0.0.31",
     "uuid": "~3.0.1",
     "validator": "~7.0.0",
