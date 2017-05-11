@@ -96,3 +96,15 @@ $ iptables -t nat -A POSTROUTING ! -d 192.168.0.1 -j MASQUERADE
 $ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.0.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
 $ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.0.1 -p tcp --dport 443 -j REDIRECT --to-port 8080
 ```
+
+# Troubleshooting
+
+Sometimes the PI doesn't find a connection to the TV. To work around and reconnect it again, do the following:
+
+1. restart dnsmasq service (`sudo service dnsmasq restart`)
+2. switch eth1 interface back `manual` (`iface eth1 inet manual`)
+3. restart
+4. switch eth1 interface back to its orginal settings (see above)
+5. restart
+
+To see if packets are now come through the Pi call `ifconfig`.
