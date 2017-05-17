@@ -86,6 +86,11 @@ In order to be able to run the proxy on port `8080` instead of `80` we need to t
 
 ```sh
 $ /etc/init.d/hbbtvproxy start
+```
+
+If you want to run this every time the PI boots up run:
+
+```sh
 $ sudo update-rc.d hbbtvproxy defaults
 ```
 
@@ -95,6 +100,20 @@ Or you can just apply the rules manually:
 $ iptables -t nat -A POSTROUTING ! -d 192.168.0.1 -j MASQUERADE
 $ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.0.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
 $ iptables -t nat -A PREROUTING -i eth1 ! -d 192.168.0.1 -p tcp --dport 443 -j REDIRECT --to-port 8080
+```
+
+# Better visibility within network
+
+If you have multiple Raspberry PI devices setup and attached to your OTT devices it can be difficult to find the right PI to "ssh" into. To make your TVs more visible you should change the hostname of the PI attached to your TV. Let's say you've connected a PI to a Samsung Smart TV with model number "UE65HU7100". Open the Raspberry config utility:
+
+```sh
+$ sudo raspi-config
+```
+
+Choose the second option labeled as "Hostname - Set the visible name for this Pi on a network". Accept the info saying that you should only use ASCII letters 'a' through 'z' (case-insensitive), the digits '0' through '9', and the hyphen. We choose the TV model name as hostname. Accept the message and type in the new hostname "UE65HU7100". Then press ok and accept for rebooting. After the Pi has rebooted you can find it in your network by:
+
+```sh
+$ ping UE65HU7100.local
 ```
 
 # Troubleshooting
