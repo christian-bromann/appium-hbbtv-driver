@@ -29,6 +29,7 @@
     "build:devtools": "cd node_modules/chrome-devtools-frontend/scripts/gulp && npm run build && cd ../../../../",
     "clean": "rm -rf ./build",
     "compile": "babel lib/ -d build/ --ignore lib/webdriver,lib/debugger/",
+    "demo": "wdio demo/wdio.conf.js",
     "dev": "run-p start:dev:*",
     "eslint": "eslint ./lib/*.js",
     "install": "cd node_modules/chrome-devtools-frontend/scripts/gulp && npm install && cd ../../../../",
@@ -82,6 +83,9 @@
     "istanbul": "0.4.5",
     "mocha": "3.2.0",
     "nodemon": "^1.11.0",
-    "npm-run-all": "^4.0.1"
+    "npm-run-all": "^4.0.1",
+    "wdio-mocha-framework": "0.5.10",
+    "wdio-spec-reporter": "0.1.0",
+    "webdriverio": "4.8.0"
   }
 }
