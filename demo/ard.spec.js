@@ -1,8 +1,10 @@
 import { expect } from 'chai'
 
+import HeroApp from './pageobjects/HeroApp'
+
 describe('ARD HbbTV app', () => {
     before(() => {
-        browser.url('http://itv.ard.de/ardstart/index.html')
+        HeroApp.open()
     })
 
     it('should have correct title', () => {
@@ -11,38 +13,38 @@ describe('ARD HbbTV app', () => {
 
     describe('can open app screen', () => {
         it('should not display app screen at the beginning', () => {
-            expect($('#appscreen').isVisible()).to.be.equal(false)
-            expect($('#hidemsg').isVisible()).to.be.equal(true)
+            expect(HeroApp.appscreen.isVisible()).to.be.equal(false)
+            expect(HeroApp.hbbNotifier.isVisible()).to.be.equal(true)
         })
 
         it('should press red button to enable app', () => {
             browser.keys('red')
-            $('#appscreen').waitForVisible()
-            expect($('#hidemsg').isVisible()).to.be.equal(false)
+            HeroApp.appscreen.waitForVisible()
+            expect(HeroApp.hbbNotifier.isVisible()).to.be.equal(false)
         })
 
         it('should display Mediathek app', () => {
-            expect($('.barbottom .seltxt').getText()).to.be.equal('Das Erste Mediathek')
+            expect(HeroApp.selectedAppHeadline.getText()).to.be.equal('Das Erste Mediathek')
         })
 
         it('should switch to Tatort', () => {
             browser.keys('left')
             browser.keys('left')
-            expect($('.barbottom .seltxt').getText()).to.be.equal('Der Tatort im Ersten')
+            expect(HeroApp.selectedAppHeadline.getText()).to.be.equal('Der Tatort im Ersten')
         })
     })
 
     describe('has a settings menu', () => {
         it('should not display settings per default', () => {
-            expect($('#appscreen #settings').isVisible()).to.be.equal(false)
-            expect($('#appscreen #bar').isVisible()).to.be.equal(true)
+            expect(HeroApp.settingsView.isVisible()).to.be.equal(false)
+            expect(HeroApp.barView.isVisible()).to.be.equal(true)
         })
 
         it('should open settings', () => {
             browser.keys('down')
             browser.keys('enter')
-            expect($('#appscreen #settings').isVisible()).to.be.equal(true)
-            expect($('#appscreen #bar').isVisible()).to.be.equal(false)
+            expect(HeroApp.settingsView.isVisible()).to.be.equal(true)
+            expect(HeroApp.barView.isVisible()).to.be.equal(false)
         })
 
         it('should enabled accessibility', () => {
@@ -50,20 +52,20 @@ describe('ARD HbbTV app', () => {
             browser.keys('down')
             browser.keys('down')
             browser.keys('enter')
-            const buttonTxt = $('.barcolbuttons .colbuttontxt')
-            expect(buttonTxt.getText()).to.be.equal('Blau: Videotext')
-            expect(buttonTxt.getAttribute('class')).to.be.equal('colbuttontxt lg')
+            const videotextBtn = HeroApp.actionButtons[0]
+            expect(videotextBtn.getText()).to.be.equal('Blau: Videotext')
+            expect(videotextBtn.getAttribute('class')).to.be.equal('colbuttontxt lg')
         })
 
         it('should store settings so they are available after reopening app', () => {
-            browser.url('http://itv.ard.de/ardstart/index.html')
-            $('#hidemsg').waitForVisible()
+            HeroApp.open()
+            HeroApp.hbbNotifier.waitForVisible()
             browser.keys('red')
-            $('#appscreen').waitForVisible()
+            HeroApp.appscreen.waitForVisible()
 
-            const buttonTxt = $('.barcolbuttons .colbuttontxt')
-            expect(buttonTxt.getText()).to.be.equal('Blau: Videotext')
-            expect(buttonTxt.getAttribute('class')).to.be.equal('colbuttontxt lg')
+            const videotextBtn = HeroApp.actionButtons[0]
+            expect(videotextBtn.getText()).to.be.equal('Blau: Videotext')
+            expect(videotextBtn.getAttribute('class')).to.be.equal('colbuttontxt lg')
         })
 
         it('should disable accessibility', () => {
@@ -75,9 +77,9 @@ describe('ARD HbbTV app', () => {
             browser.keys('up')
             browser.keys('up')
             browser.keys('enter')
-            const buttonTxt = $('.barcolbuttons .colbuttontxt')
-            expect(buttonTxt.getText()).to.be.equal('Videotext')
-            expect(buttonTxt.getAttribute('class')).to.be.equal('colbuttontxt')
+            const videotextBtn = HeroApp.actionButtons[0]
+            expect(videotextBtn.getText()).to.be.equal('Videotext')
+            expect(videotextBtn.getAttribute('class')).to.be.equal('colbuttontxt')
         })
     })
 })
