@@ -4,6 +4,7 @@
   },
   "globals": {
     browser: true,
-    $: true
+    $: true,
+    $$: true
   }
 }
