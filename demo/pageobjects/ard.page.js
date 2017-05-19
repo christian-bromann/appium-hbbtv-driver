@@ -1,4 +1,4 @@
-class HeroApp {
+class ARDApp {
     get appscreen () {
         return $('#appscreen')
     }
@@ -28,4 +28,4 @@ class HeroApp {
     }
 }
 
-export default new HeroApp()
+export default new ARDApp()

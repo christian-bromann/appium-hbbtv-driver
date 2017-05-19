@@ -24,7 +24,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './demo/ard.spec.js'
+        './specs/*.spec.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -134,6 +134,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
+        timeout: 20000,
         compilers: ['js:babel-core/register']
     }
     //
