@@ -19,6 +19,8 @@ describe('mpat app', () => {
 
     it('should open MWS app successfully', () => {
         browser.keys('enter')
-        expect(browser.getUrl()).to.contain('MPAT-core/web/mws/red-button/launcher/media-web-symposium"')
+        browser.waitUntil(() => {
+            return browser.getUrl().includes('MPAT-core/web/mws/red-button/launcher/media-web-symposium')
+        })
     })
 })
