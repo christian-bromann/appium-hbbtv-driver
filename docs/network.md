@@ -3,6 +3,13 @@ Network Setup
 
 The Raspberry Pi has to act as middlemen between SmartTV and network. The following explains how to setup the Pi to connect properly without doing any additional setup. Per default the Raspberry comes with an integrated ethernet port. In order to allow the described setup an additional port is required and can be added by using an USB network adapter (e.g. a Renkforce Network adapter available at [Conrad](http://www.conrad.com/ce/en/product/1079700/Network-adapter-100-Mbits-Renkforce-USB-20-LAN-10100-Mbps)). With that connect your computer/router via ethernet cable to the integrated ethernet port and the SmartTV to the added network adapter. This will define the connection between the Raspberry Pi and your computer/router as `eth0` and between the SmartTV and the Pi as `eth1` interface.
 
+Check if you have `dnsmsq` installed on the pi and install if not
+
+```sh
+$ which dnsmasq # not installed
+$ sudo apt-get install dnsmasq
+```
+
 First let's setup the DHCP server to assign IPs for the SmartTV properly.
 
 ```sh
