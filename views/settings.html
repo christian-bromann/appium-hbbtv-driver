@@ -2,20 +2,11 @@
 <title>HbbTV Proxy Settings</title>
 
 <form action="/settings" method="post">
-    <h1>Autoload HbbTV App</h1>
-    <label>URL of HbbTV app to autoload:</label><br>
-    <input type="text" name="autoload" value="<%= data.autoload %>" style="width: 300px"><br>
-    <br>
-    <label>Don't autoload if URL contains the following words (comma separated):</label><br>
-    <input type="text" name="whitelist" value="<%= data.whitelist %>" style="width: 300px"><br>
-    <br>
-    <input type="submit" value="Save">
-
     <h2>Register to Selenium grid</h2>
-    <label>Hub host:</label><br>
+    <label>Hub host<sub>(e.g. "192.168.3.1")</sub>:</label><br>
     <input type="text" name="host" value="<%= data.host %>" style="width: 300px"><br>
     <br>
-    <label>Hub port:</label><br>
+    <label>Hub port<sub>(e.g. "4444")</sub>:</label><br>
     <input type="text" name="port" value="<%= data.port %>" style="width: 300px"><br>
     <br>
     <input type="submit" value="Register"<% if (data.isAlreadyRegistered) { %> disabled="disabled"<% } %>>
