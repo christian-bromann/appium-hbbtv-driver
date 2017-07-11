@@ -16,6 +16,14 @@
 
 <div class="container">
     <div class="row">
+        <% if (error) { %>
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <%= error %>
+        </div>
+        <% } %>
+
         <div class="col-md-12">
             <form action="/settings" method="post">
                 <h2 class="lead">Register to Selenium Grid Server</h2>
@@ -26,6 +34,26 @@
                 <div class="form-group">
                     <label for="host">Hub port</label>
                     <input type="number" class="form-control" name="port" id="port" placeholder="4444" value="<%= data.port %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="host">Custom Capabilities</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="capabilityName[]" placeholder="platformVersion">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="capabilityValue[]" id="capValue" placeholder="1.5">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="capabilityName[]" placeholder="platformName">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="capabilityValue[]" id="capValue" placeholder="Samsung">
+                        </div>
+                    </div>
                 </div>
 
                 <% if (!data.isAlreadyRegistered) { %>
